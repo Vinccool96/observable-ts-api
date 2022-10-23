@@ -2,7 +2,7 @@ import { Observable } from "./Observable";
 
 /**
  * An `InvalidationListener` is notified whenever an {@link Observable} becomes invalid. It can be registered and
- * unregistered with [Observable.addListener] and [Observable.removeListener] respectively.
+ * unregistered with {@link Observable#addListener} and {@link Observable#removeListener} respectively.
  *
  * For an in-depth explanation of invalidation events and how they differ from change events, see the documentation of
  * `ObservableValue`.

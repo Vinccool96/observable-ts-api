@@ -17,8 +17,10 @@ import { InvalidationListener } from "./InvalidationListener";
  // * @see io.github.vinccool96.observationskt.collections.ObservableList
  // * @see io.github.vinccool96.observationskt.collections.ObservableMap
  // */
-export interface Observable {/**
-   * Adds an [InvalidationListener] which will be notified whenever the `Observable` becomes invalid. If the same
+export interface Observable {
+
+  /**
+   * Adds an {@link InvalidationListener} which will be notified whenever the `Observable` becomes invalid. If the same
    * listener is added more than once, then it will be notified more than once. That is, no check is made to ensure
    * uniqueness.
    *
@@ -26,13 +28,13 @@ export interface Observable {/**
    *
    * The `Observable` stores a strong reference to the listener which will prevent the listener from being garbage
    * collected and may result in a memory leak. It is recommended to either unregister a listener by calling
-   * [removeListener] after use or to use an instance of [WeakInvalidationListener] avoid this situation.
+   * {@link removeListener} after use or to use an instance of [WeakInvalidationListener] avoid this situation.
    *
    * @param listener The listener to register
    *
-   * @see removeListener(InvalidationListener)
+   * @see removeListener
    */
-  addListener(listener: InvalidationListener)
+  addListener(listener: InvalidationListener): void
 
   /**
    * Removes the given listener from the collections of listeners, that are notified whenever the value of the
@@ -44,9 +46,9 @@ export interface Observable {/**
    *
    * @param listener The listener to remove
    *
-   * @see addListener(InvalidationListener)
+   * @see addListener
    */
-  removeListener(listener: InvalidationListener)
+  removeListener(listener: InvalidationListener): void
 
   /**
    * Verify if the specified `InvalidationListener` already exists for this `Observable`.
@@ -55,6 +57,6 @@ export interface Observable {/**
    *
    * @return `true`, if the listener already listens, `false` otherwise.
    */
-  hasListener(listener: InvalidationListener): Boolean
+  hasListener(listener: InvalidationListener): boolean
 
 }
