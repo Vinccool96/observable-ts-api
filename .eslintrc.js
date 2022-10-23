@@ -21,15 +21,11 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": 1,
     "no-empty": [
       "error",
-      {
-        allowEmptyCatch: true,
-      },
+      { allowEmptyCatch: true },
     ],
     "prefer-const": [
       "warn",
-      {
-        destructuring: "all",
-      },
+      { destructuring: "all" },
     ],
     "spaced-comment": "warn",
     quotes: [
@@ -40,5 +36,7 @@ module.exports = {
     "quote-props": ["error", "as-needed"],
     "comma-dangle": ["error", "always-multiline"],
     "object-curly-spacing": ["error", "always"],
+    curly: "error",
+    "object-curly-newline": ["error", { multiline: true }],
   },
 }
