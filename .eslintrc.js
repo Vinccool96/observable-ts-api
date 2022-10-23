@@ -39,5 +39,6 @@ module.exports = {
     ],
     "quote-props": ["error", "as-needed"],
     "comma-dangle": ["error", "always-multiline"],
+    "object-curly-spacing": ["error", "always"],
   },
 }
