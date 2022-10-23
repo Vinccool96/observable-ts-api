@@ -38,5 +38,6 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     curly: "error",
     "object-curly-newline": ["error", { multiline: true }],
+    "padded-blocks": ["error", { blocks: "never", classes: "always" }],
   },
 }
