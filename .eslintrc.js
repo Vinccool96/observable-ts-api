@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   root: true,
-  extends: ["eslint:recommended", "prettier"],
+  extends: ["plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "eslint:recommended", "prettier"],
   globals: {},
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -38,6 +38,5 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     curly: "error",
     "object-curly-newline": ["error", { multiline: true }],
-    "padded-blocks": ["error", { blocks: "never", classes: "always" }],
   },
 }
