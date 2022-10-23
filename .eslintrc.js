@@ -3,6 +3,7 @@ module.exports = {
     commonjs: true,
     es6: true,
     node: true,
+    jest: true,
   },
   root: true,
   extends: ["plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "eslint:recommended", "prettier"],
@@ -38,5 +39,6 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     curly: "error",
     "object-curly-newline": ["error", { multiline: true }],
+    semi: ["error", "never"],
   },
 }
