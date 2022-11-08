@@ -1,4 +1,4 @@
-import { Observable } from "./Observable";
+import { Observable } from "./Observable"
 
 /**
  * An `InvalidationListener` is notified whenever an {@link Observable} becomes invalid. It can be registered and

@@ -73,3 +73,5 @@ fabric.properties
 
 node_modules
 build
+
+*.tgz
