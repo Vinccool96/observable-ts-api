@@ -19,7 +19,7 @@ module.exports = {
     "no-cond-assign": [2, "except-parens"],
     "no-unused-vars": 0,
     "no-redeclare": 0,
-    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "no-empty": [
       "error",
       { allowEmptyCatch: true },
