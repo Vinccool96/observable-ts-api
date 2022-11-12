@@ -31,10 +31,10 @@ export class WeakInvalidationListener implements InvalidationListener, WeakListe
   invalidated(observable: Observable): void {
     const listener = get(this.ref)
     if (listener !== undefined) {
-      // The weakly reference listener has been garbage collected, so this WeakListener will now unhook itself from the
-      // source bean
       listener.invalidated(observable)
     } else {
+      // The weakly reference listener has been garbage collected, so this WeakListener will now unhook itself from the
+      // source bean
       observable.removeListener(this)
     }
   }

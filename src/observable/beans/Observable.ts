@@ -1,4 +1,4 @@
-import { InvalidationListener } from "./InvalidationListener";
+import { InvalidationListener } from "./InvalidationListener"
 
 /**
  * An `Observable` is an entity that wraps content and allows to observe the content for invalidations.
@@ -10,13 +10,11 @@ import { InvalidationListener } from "./InvalidationListener";
  * Implementations of this class should strive to generate as few events as possible to avoid wasting too much time in
  * event handlers. Implementations in this library mark themselves as invalid when the first invalidation event occurs.
  * They do not generate any more invalidation events until their value is recomputed and valid again.
+ *
+ * @see ./value/ObservableValue
  */
-
-// *
- // * @see value.ObservableValue
  // * @see io.github.vinccool96.observationskt.collections.ObservableList
  // * @see io.github.vinccool96.observationskt.collections.ObservableMap
- // */
 export interface Observable {
 
   /**
@@ -28,11 +26,13 @@ export interface Observable {
    *
    * The `Observable` stores a strong reference to the listener which will prevent the listener from being garbage
    * collected and may result in a memory leak. It is recommended to either unregister a listener by calling
-   * {@link removeListener} after use or to use an instance of [WeakInvalidationListener] avoid this situation.
+   * {@link removeListener} after use or to use an instance of {@link WeakInvalidationListener} avoid this situation.
    *
    * @param listener The listener to register
    *
    * @see removeListener
+   *
+   * {@label INVALIDATION_LISTENER}
    */
   addListener(listener: InvalidationListener): void
 
@@ -47,6 +47,8 @@ export interface Observable {
    * @param listener The listener to remove
    *
    * @see addListener
+   *
+   * {@label INVALIDATION_LISTENER}
    */
   removeListener(listener: InvalidationListener): void
 
@@ -56,6 +58,8 @@ export interface Observable {
    * @param listener the `InvalidationListener` to verify
    *
    * @return `true`, if the listener already listens, `false` otherwise.
+   *
+   * {@label INVALIDATION_LISTENER}
    */
   hasListener(listener: InvalidationListener): boolean
 

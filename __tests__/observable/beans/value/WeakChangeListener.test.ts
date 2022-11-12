@@ -1,18 +1,20 @@
-import { describe, expect, it } from "@jest/globals"
+import { describe, it, expect } from "@jest/globals"
+
+import { gc } from "expose-ts-gc"
 
 import {
   ChangeListener,
   InvalidationListener,
   ObservableValue,
-  WeakInvalidationListener,
-} from "../../../src/observable/beans"
+  WeakChangeListener,
+} from "../../../../src/observable/beans"
 
-import { gc } from "expose-ts-gc"
-import { InvalidationListenerMock } from "./InvalidationListenerMock"
+import { Any } from "../../../utils/Any"
+import { ChangeListenerMock } from "./ChangeListenerMock"
 
 class ObservableMock implements ObservableValue<Record<string, unknown> | null> {
 
-  public removeCounter = 0
+  removeCounter = 0
 
   reset() {
     this.removeCounter = 0
@@ -37,23 +39,26 @@ class ObservableMock implements ObservableValue<Record<string, unknown> | null> 
 
 }
 
-describe("WeakInvalidationListener", function () {
+describe("WeakChangeListener", function () {
   it("should handle GC", function () {
-    let listener: InvalidationListenerMock | null = new InvalidationListenerMock()
-    const weakListener = new WeakInvalidationListener(listener)
+    let listener: ChangeListenerMock<Any | null> | null = new ChangeListenerMock(new Any())
+    const weakListener: WeakChangeListener<Any | null> = new WeakChangeListener(listener)
     const o = new ObservableMock()
+    const obj1 = new Any()
+    const obj2 = new Any()
 
     // regular call
-    weakListener.invalidated(o)
-    listener.check(o, 1)
+    weakListener.changed(o, obj1, obj2)
+    listener.check(o, obj1, obj2, 1)
     expect(weakListener.wasGarbageCollected).toBe(false)
+    expect(o.removeCounter).toEqual(0)
 
     // GC-ed call
     o.reset()
     listener = null
     gc()
     expect(weakListener.wasGarbageCollected).toBe(true)
-    weakListener.invalidated(o)
+    weakListener.changed(o, obj2, obj1)
     expect(o.removeCounter).toEqual(1)
   })
 })
