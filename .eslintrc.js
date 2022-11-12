@@ -32,5 +32,9 @@ module.exports = {
     "object-curly-newline": ["error", { multiline: true }],
     semi: ["error", "never"],
     "@typescript-eslint/type-annotation-spacing": ["error", { before: false, after: true }],
+    "space-in-parens": ["error", "never"],
+    "comma-spacing": ["error", { before: false, after: true }],
+    "array-bracket-spacing": ["error", "never"],
+    "computed-property-spacing": ["error", "never"],
   },
 }

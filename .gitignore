@@ -75,3 +75,9 @@ node_modules
 build
 
 *.tgz
+*.d.ts
+*.d.ts.map
+*.js
+*.js.map
+
+!jest.config.js

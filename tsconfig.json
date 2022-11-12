@@ -4,6 +4,7 @@
     "rootDir": ".",
   },
   "exclude": [
+    "build",
     "node_modules",
     "scripts"
   ]
