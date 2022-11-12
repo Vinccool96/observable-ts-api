@@ -1,4 +1,4 @@
-import { ChangeListener, ObservableValue, WeakListener } from "../../../../src/observable/beans"
+import { ChangeListener, ObservableValue, WeakListener } from "../../../../src"
 
 export class WeakChangeListenerMock<T> implements ChangeListener<T>, WeakListener {
 

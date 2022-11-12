@@ -2,7 +2,7 @@ import { expect } from "@jest/globals"
 
 import { isInteger } from "int-or-float"
 
-import { ChangeListener, ObservableValue } from "../../../../src/observable/beans"
+import { ChangeListener, ObservableValue } from "../../../../src"
 
 const EPSILON = 1e-12
 

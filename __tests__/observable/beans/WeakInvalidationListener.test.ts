@@ -1,11 +1,6 @@
 import { describe, expect, it } from "@jest/globals"
 
-import {
-  ChangeListener,
-  InvalidationListener,
-  ObservableValue,
-  WeakInvalidationListener,
-} from "../../../src/observable/beans"
+import { ChangeListener, InvalidationListener, ObservableValue, WeakInvalidationListener } from "../../../src"
 
 import { gc } from "expose-ts-gc"
 import { InvalidationListenerMock } from "./InvalidationListenerMock"

@@ -2,7 +2,7 @@ import { create, get, WeakRef } from "node-weak-ref"
 
 import { ChangeListener } from "./ChangeListener"
 import { WeakListener } from "../WeakListener"
-import { ObservableValue } from './ObservableValue';
+import { ObservableValue } from "./ObservableValue"
 
 /**
  * A `WeakChangeListener` can be used, if an {@link ObservableValue} should only maintain a weak reference to the

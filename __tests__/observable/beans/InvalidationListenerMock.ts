@@ -1,4 +1,4 @@
-import { InvalidationListener, Observable } from "../../../src/observable/beans"
+import { InvalidationListener, Observable } from "../../../src"
 
 export class InvalidationListenerMock implements InvalidationListener {
 
