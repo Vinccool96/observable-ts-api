@@ -1688,6 +1688,11 @@ inherits@2:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
+int-or-float@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/int-or-float/-/int-or-float-1.0.0.tgz#5ab041603e4f34e1472f4f9449a0d841eb0c7685"
+  integrity sha512-MX8j533JOCSbpSil5pV2gT+Th7UTcgMjAjN2McsMqGWtPqLGlE6uZ0spaUWYSMS2nBxPUR5RLxHOjaLzB/fPjA==
+
 is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"

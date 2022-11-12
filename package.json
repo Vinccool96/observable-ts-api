@@ -8,6 +8,7 @@
     "prepublish": "yarn run build && yarn pack"
   },
   "dependencies": {
+    "int-or-float": "^1.0.0",
     "node-weak-ref": "^1.3.0"
   },
   "devDependencies": {
