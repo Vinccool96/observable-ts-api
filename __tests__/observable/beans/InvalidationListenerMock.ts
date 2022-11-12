@@ -1,3 +1,5 @@
+import { expect } from "@jest/globals"
+
 import { InvalidationListener, Observable } from "../../../src"
 
 export class InvalidationListenerMock implements InvalidationListener {
