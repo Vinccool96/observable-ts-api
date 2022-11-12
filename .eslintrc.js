@@ -1,33 +1,24 @@
 module.exports = {
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint", "prettier"],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  root: true,
   env: {
-    commonjs: true,
-    es6: true,
     node: true,
     jest: true,
   },
-  root: true,
-  extends: ["plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "eslint:recommended", "prettier"],
-  globals: {},
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: "module",
-  },
-  plugins: ["@typescript-eslint"],
-  ignorePatterns: ["lib/*"],
   rules: {
+    "space-before-blocks": "error",
+    "space-infix-ops": "error",
+    "key-spacing": ["error", { afterColon: true }],
+    "semi-spacing": ["error", { before: false, after: true }],
+    "max-len": ["error", { code: 120 }],
     "no-cond-assign": [2, "except-parens"],
     "no-unused-vars": 0,
     "no-redeclare": 0,
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-    "no-empty": [
-      "error",
-      { allowEmptyCatch: true },
-    ],
-    "prefer-const": [
-      "warn",
-      { destructuring: "all" },
-    ],
+    "no-empty": ["error", { allowEmptyCatch: true }],
+    "prefer-const": ["warn", { destructuring: "all" }],
     "spaced-comment": "warn",
     quotes: [
       "error",
@@ -40,5 +31,6 @@ module.exports = {
     curly: "error",
     "object-curly-newline": ["error", { multiline: true }],
     semi: ["error", "never"],
+    "@typescript-eslint/type-annotation-spacing": ["error", { before: false, after: true }],
   },
 }
