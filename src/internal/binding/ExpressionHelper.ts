@@ -30,8 +30,32 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
   protected abstract fireValueChangedEvent(): void
 
   static addListener<T>(helper: ExpressionHelper<T> | null, observable: ObservableValue<T>,
-    listener: InvalidationListener): ExpressionHelper<T> {
+    listener: InvalidationListener): ExpressionHelper<T>
+  static addListener<T>(helper: ExpressionHelper<T> | null, observable: ObservableValue<T>,
+    listener: ChangeListener<In<T>>): ExpressionHelper<T>
+  static addListener<T>(helper: ExpressionHelper<T> | null, observable: ObservableValue<T>,
+    listener: InvalidationListener|ChangeListener<In<T>>): ExpressionHelper<T> {
+    if (isInvalidationListener(listener)){
+      observable.value // validate
+      return helper?.addListener(listener) || new SingleInvalidation(observable, listener)
+    } else {
+      return helper?.addListener(listener) || new SingleChange(observable, listener)
+    }
+  }
 
+  static removeListener<T>(helper: ExpressionHelper<T> | null, listener: InvalidationListener): ExpressionHelper<T> | null
+  static removeListener<T>(helper: ExpressionHelper<T> | null, listener: ChangeListener<In<T>>): ExpressionHelper<T> | null
+  static removeListener<T>(helper: ExpressionHelper<T> | null, listener: InvalidationListener|ChangeListener<In<T>>): ExpressionHelper<T> | null{
+    if (isInvalidationListener(listener))
+    {
+      return helper?.removeListener(listener) || null
+    } else{
+      return helper?.removeListener(listener) || null
+    }
+  }
+
+  static fireValueChangedEvent<T>(helper: ExpressionHelper<T> | null) {
+    helper?.fireValueChangedEvent()
   }
 
 }
