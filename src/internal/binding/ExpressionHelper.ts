@@ -1,10 +1,10 @@
 import { ChangeListener, InvalidationListener, ObservableValue } from "../../observable"
 
+import { In } from "../../useful"
+
 import { ExpressionHelperBase } from "./ExpressionHelperBase"
 import { isInvalidationListener } from "../utils/typeChecks"
 import { arrayOfNulls, copyInto, copyOf, copyOfNotNulls } from "../utils/arrayUtils"
-
-import { In } from "../../useful"
 
 export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
   protected readonly observable: ObservableValue<T>
@@ -13,7 +13,7 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
 
   abstract readonly changeListeners: ChangeListener<In<T>>[]
 
-  constructor(observable: ObservableValue<T>) {
+  protected constructor(observable: ObservableValue<T>) {
     super()
     this.observable = observable
   }
