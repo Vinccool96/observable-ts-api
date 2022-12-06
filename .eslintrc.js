@@ -12,7 +12,6 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "prefer-const": ["warn", { destructuring: "all" }],
     "spaced-comment": "warn",
-    quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
     curly: "error",
   },
 }
