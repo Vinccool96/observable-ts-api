@@ -1,6 +1,7 @@
 import { Observable } from "../Observable"
 import { InvalidationListener } from "../InvalidationListener"
 import { ChangeListener } from "./ChangeListener"
+import { In } from "../../../useful"
 
 /**
  * An `ObservableValue` is an entity that wraps a value and allows to observe the value for changes. In general this
@@ -66,7 +67,7 @@ export interface ObservableValue<T> extends Observable {
    *
    * {@label CHANGE_LISTENER}
    */
-  addListener(listener: ChangeListener<T>): void
+  addListener(listener: ChangeListener<In<T>>): void
   addListener(listener: InvalidationListener): void
 
   /**
@@ -81,7 +82,7 @@ export interface ObservableValue<T> extends Observable {
    *
    * @see addListener
    */
-  removeListener(listener: ChangeListener<T>): void
+  removeListener(listener: ChangeListener<In<T>>): void
   removeListener(listener: InvalidationListener): void
 
   /**
@@ -91,7 +92,7 @@ export interface ObservableValue<T> extends Observable {
    *
    * @return `true`, if the listener already listens, `false` otherwise.
    */
-  hasListener<S>(listener: ChangeListener<S>): boolean
+  hasListener(listener: ChangeListener<In<T>>): boolean
   hasListener(listener: InvalidationListener): boolean
 
 }

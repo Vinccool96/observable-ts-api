@@ -3,6 +3,7 @@ import { create, get, WeakRef } from "node-weak-ref"
 import { ChangeListener } from "./ChangeListener"
 import { WeakListener } from "../WeakListener"
 import { ObservableValue } from "./ObservableValue"
+import { Out } from "../../../useful"
 
 /**
  * A `WeakChangeListener` can be used, if an {@link ObservableValue} should only maintain a weak reference to the
@@ -25,7 +26,6 @@ import { ObservableValue } from "./ObservableValue"
  * @param listener The original listener that should be notified
  */
 export class WeakChangeListener<T> implements ChangeListener<T>, WeakListener {
-
   private readonly ref: WeakRef<ChangeListener<T>>
 
   /**
@@ -37,7 +37,7 @@ export class WeakChangeListener<T> implements ChangeListener<T>, WeakListener {
     this.ref = create(listener)
   }
 
-  changed<S extends T>(observable: ObservableValue<S>, oldValue: T, newValue: T) {
+  changed(observable: ObservableValue<Out<T>>, oldValue: T, newValue: T) {
     const listener = get(this.ref)
     if (listener !== undefined) {
       listener.changed(observable, oldValue, newValue)
@@ -51,5 +51,4 @@ export class WeakChangeListener<T> implements ChangeListener<T>, WeakListener {
   get wasGarbageCollected(): boolean {
     return get(this.ref) === undefined
   }
-
 }

@@ -1,4 +1,5 @@
 import { ObservableValue } from "./ObservableValue"
+import { Out } from "../../../useful"
 
 /**
  * A `ChangeListener` is notified whenever the value of an {@link ObservableValue} changes. It can be registered and
@@ -24,6 +25,6 @@ export interface ChangeListener<T> {
    * @param oldValue The old value
    * @param newValue The new value
    */
-  changed<S extends T>(observable: ObservableValue<S>, oldValue: T, newValue: T)
+  changed(observable: ObservableValue<Out<T>>, oldValue: T, newValue: T)
 
 }
