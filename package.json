@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "prepublish": "yarn run build && yarn pack"
+    "prepublishOnly": "yarn run build && yarn pack",
+    "test": "jest"
   },
   "dependencies": {
     "int-or-float": "^1.0.0",
