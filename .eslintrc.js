@@ -1,7 +1,7 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  plugins: ["@typescript-eslint/eslint-plugin"],
+  extends: ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   root: true,
   env: {
     node: true,
@@ -20,11 +20,7 @@ module.exports = {
     "no-empty": ["error", { allowEmptyCatch: true }],
     "prefer-const": ["warn", { destructuring: "all" }],
     "spaced-comment": "warn",
-    quotes: [
-      "error",
-      "double",
-      { avoidEscape: true, allowTemplateLiterals: false },
-    ],
+    quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
     "quote-props": ["error", "as-needed"],
     "comma-dangle": ["error", "always-multiline"],
     "object-curly-spacing": ["error", "always"],

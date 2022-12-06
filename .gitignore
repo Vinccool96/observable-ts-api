@@ -76,6 +76,7 @@ build
 
 *.tgz
 *.d.ts
+!/src/**/*.d.ts
 *.d.ts.map
 *.js
 *.js.map
