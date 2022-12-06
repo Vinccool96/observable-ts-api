@@ -7,7 +7,6 @@ import { ChangeListener, ObservableValue } from "../../../../src"
 const EPSILON = 1e-12
 
 export class ChangeListenerMock<T> implements ChangeListener<T> {
-
   private valueModel?: ObservableValue<T>
 
   private readonly undef: T
@@ -62,5 +61,4 @@ export class ChangeListenerMock<T> implements ChangeListener<T> {
     expect(this.counter).toEqual(counter)
     this.reset()
   }
-
 }

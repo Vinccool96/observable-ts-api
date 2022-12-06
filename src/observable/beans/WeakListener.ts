@@ -6,7 +6,6 @@
  * @see ./value/WeakChangeListener
  */
 export interface WeakListener {
-
   /**
    * Returns `true` if the linked listener was garbage-collected. In this case, the listener can be removed from
    * the observable.
@@ -14,5 +13,4 @@ export interface WeakListener {
    * @return `true` if the linked listener was garbage-collected.
    */
   wasGarbageCollected: boolean
-
 }

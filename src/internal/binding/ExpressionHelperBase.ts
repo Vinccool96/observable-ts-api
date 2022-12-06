@@ -5,11 +5,10 @@ function isWeakListener(obj: WeakListener | Record<string, unknown> | null): obj
     return false
   }
 
-  return "wasGarbageCollected" in obj && typeof (obj.wasGarbageCollected) === "boolean"
+  return "wasGarbageCollected" in obj && typeof obj.wasGarbageCollected === "boolean"
 }
 
 export class ExpressionHelperBase {
-
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
@@ -31,5 +30,4 @@ export class ExpressionHelperBase {
     }
     return size
   }
-
 }

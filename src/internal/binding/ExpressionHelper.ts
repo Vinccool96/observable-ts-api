@@ -7,7 +7,6 @@ import { arrayOfNulls, copyInto, copyOf, copyOfNotNulls } from "../utils/arrayUt
 import { In } from "../../useful"
 
 export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
-
   protected readonly observable: ObservableValue<T>
 
   abstract readonly invalidationListeners: InvalidationListener[]
@@ -29,13 +28,22 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
 
   protected abstract fireValueChangedEvent(): void
 
-  static addListener<T>(helper: ExpressionHelper<T> | null, observable: ObservableValue<T>,
-    listener: InvalidationListener): ExpressionHelper<T>
-  static addListener<T>(helper: ExpressionHelper<T> | null, observable: ObservableValue<T>,
-    listener: ChangeListener<In<T>>): ExpressionHelper<T>
-  static addListener<T>(helper: ExpressionHelper<T> | null, observable: ObservableValue<T>,
-    listener: InvalidationListener|ChangeListener<In<T>>): ExpressionHelper<T> {
-    if (isInvalidationListener(listener)){
+  static addListener<T>(
+    helper: ExpressionHelper<T> | null,
+    observable: ObservableValue<T>,
+    listener: InvalidationListener
+  ): ExpressionHelper<T>
+  static addListener<T>(
+    helper: ExpressionHelper<T> | null,
+    observable: ObservableValue<T>,
+    listener: ChangeListener<In<T>>
+  ): ExpressionHelper<T>
+  static addListener<T>(
+    helper: ExpressionHelper<T> | null,
+    observable: ObservableValue<T>,
+    listener: InvalidationListener | ChangeListener<In<T>>
+  ): ExpressionHelper<T> {
+    if (isInvalidationListener(listener)) {
       observable.value // validate
       return helper?.addListener(listener) || new SingleInvalidation(observable, listener)
     } else {
@@ -43,13 +51,21 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
     }
   }
 
-  static removeListener<T>(helper: ExpressionHelper<T> | null, listener: InvalidationListener): ExpressionHelper<T> | null
-  static removeListener<T>(helper: ExpressionHelper<T> | null, listener: ChangeListener<In<T>>): ExpressionHelper<T> | null
-  static removeListener<T>(helper: ExpressionHelper<T> | null, listener: InvalidationListener|ChangeListener<In<T>>): ExpressionHelper<T> | null{
-    if (isInvalidationListener(listener))
-    {
+  static removeListener<T>(
+    helper: ExpressionHelper<T> | null,
+    listener: InvalidationListener
+  ): ExpressionHelper<T> | null
+  static removeListener<T>(
+    helper: ExpressionHelper<T> | null,
+    listener: ChangeListener<In<T>>
+  ): ExpressionHelper<T> | null
+  static removeListener<T>(
+    helper: ExpressionHelper<T> | null,
+    listener: InvalidationListener | ChangeListener<In<T>>
+  ): ExpressionHelper<T> | null {
+    if (isInvalidationListener(listener)) {
       return helper?.removeListener(listener) || null
-    } else{
+    } else {
       return helper?.removeListener(listener) || null
     }
   }
@@ -57,11 +73,9 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
   static fireValueChangedEvent<T>(helper: ExpressionHelper<T> | null) {
     helper?.fireValueChangedEvent()
   }
-
 }
 
 class SingleInvalidation<T> extends ExpressionHelper<T> {
-
   private readonly listener: InvalidationListener
 
   constructor(observable: ObservableValue<T>, listener: InvalidationListener) {
@@ -100,11 +114,9 @@ class SingleInvalidation<T> extends ExpressionHelper<T> {
   get changeListeners(): ChangeListener<In<T>>[] {
     return []
   }
-
 }
 
 class SingleChange<T> extends ExpressionHelper<T> {
-
   private readonly listener: ChangeListener<In<T>>
 
   private currentValue: T
@@ -151,11 +163,9 @@ class SingleChange<T> extends ExpressionHelper<T> {
   get changeListeners(): ChangeListener<In<T>>[] {
     return [this.listener]
   }
-
 }
 
 class Generic<T> extends ExpressionHelper<T> {
-
   private invalidationListenerArray: Array<InvalidationListener | null> = []
 
   private changeListenerArray: Array<ChangeListener<In<T>> | null> = []
@@ -169,12 +179,17 @@ class Generic<T> extends ExpressionHelper<T> {
   private currentValue: T
 
   constructor(observable: ObservableValue<T>, listener0: InvalidationListener, listener1: InvalidationListener)
-  constructor(observable: ObservableValue<T>, listener0: ChangeListener<In<T>>,
-              listener1: ChangeListener<In<T>>)
-  constructor(observable: ObservableValue<T>, invalidationListener: InvalidationListener,
-              changeListener: ChangeListener<In<T>>)
-  constructor(observable: ObservableValue<T>, listener0: InvalidationListener | ChangeListener<In<T>>,
-              listener1: InvalidationListener | ChangeListener<In<T>>) {
+  constructor(observable: ObservableValue<T>, listener0: ChangeListener<In<T>>, listener1: ChangeListener<In<T>>)
+  constructor(
+    observable: ObservableValue<T>,
+    invalidationListener: InvalidationListener,
+    changeListener: ChangeListener<In<T>>
+  )
+  constructor(
+    observable: ObservableValue<T>,
+    listener0: InvalidationListener | ChangeListener<In<T>>,
+    listener1: InvalidationListener | ChangeListener<In<T>>
+  ) {
     super(observable)
 
     this.currentValue = observable.value
@@ -218,8 +233,10 @@ class Generic<T> extends ExpressionHelper<T> {
         const newSize = this.invalidationSize < oldSize ? oldSize : (oldSize * 3) / 2 + 1
         this.invalidationListenerArray = copyOf(this.invalidationListenerArray, newSize)
       } else if (this.invalidationSize == oldSize) {
-        this.invalidationSize = this.trim(this.invalidationSize,
-          this.invalidationListenerArray as Array<Record<string, unknown> | null>)
+        this.invalidationSize = this.trim(
+          this.invalidationSize,
+          this.invalidationListenerArray as Array<Record<string, unknown> | null>
+        )
         if (this.invalidationSize == oldSize) {
           const newSize = this.invalidationSize < oldSize ? oldSize : (oldSize * 3) / 2 + 1
           this.invalidationListenerArray = copyOf(this.invalidationListenerArray, newSize)
@@ -358,5 +375,4 @@ class Generic<T> extends ExpressionHelper<T> {
   get changeListeners(): ChangeListener<In<T>>[] {
     return copyOfNotNulls(this.changeListenerArray)
   }
-
 }

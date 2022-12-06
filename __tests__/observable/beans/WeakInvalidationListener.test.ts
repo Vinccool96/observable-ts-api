@@ -6,7 +6,6 @@ import { gc } from "expose-ts-gc"
 import { InvalidationListenerMock } from "./InvalidationListenerMock"
 
 class ObservableMock implements ObservableValue<Record<string, unknown> | null> {
-
   public removeCounter = 0
 
   reset() {
@@ -29,7 +28,6 @@ class ObservableMock implements ObservableValue<Record<string, unknown> | null> 
     // not used
     return false
   }
-
 }
 
 describe("WeakInvalidationListener", function () {

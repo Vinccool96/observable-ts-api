@@ -13,7 +13,6 @@ import { Observable } from "./Observable"
  * @see ObservableValue
  */
 export interface InvalidationListener {
-
   /**
    * This method needs to be provided by an implementation of `InvalidationListener`. It is called if an
    * {@link Observable} becomes invalid.
@@ -23,5 +22,4 @@ export interface InvalidationListener {
    * @param observable The `Observable` that became invalid
    */
   invalidated(observable: Observable): void
-
 }

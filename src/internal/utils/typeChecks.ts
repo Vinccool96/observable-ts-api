@@ -7,7 +7,8 @@ export function isInvalidationListener<T>(
   return "invalidated" in obj && typeof obj.invalidated === "function"
 }
 
-export function isChangeListener<T>(obj: ChangeListener<In<T>> | InvalidationListener | Record<string, unknown>):
-  obj is ChangeListener<In<T>> {
+export function isChangeListener<T>(
+  obj: ChangeListener<In<T>> | InvalidationListener | Record<string, unknown>
+): obj is ChangeListener<In<T>> {
   return "changed" in obj && typeof obj.changed === "function"
 }

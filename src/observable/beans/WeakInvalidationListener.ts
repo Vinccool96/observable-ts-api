@@ -42,5 +42,4 @@ export class WeakInvalidationListener implements InvalidationListener, WeakListe
   get wasGarbageCollected(): boolean {
     return get(this.ref) === undefined
   }
-
 }

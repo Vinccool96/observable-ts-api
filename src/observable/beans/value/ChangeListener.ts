@@ -14,7 +14,6 @@ import { Out } from "../../../useful"
  * @see ObservableValue
  */
 export interface ChangeListener<T> {
-
   /**
    * This method needs to be provided by an implementation of `ChangeListener`. It is called if the value of an
    * {@link ObservableValue} changes.
@@ -26,5 +25,4 @@ export interface ChangeListener<T> {
    * @param newValue The new value
    */
   changed(observable: ObservableValue<Out<T>>, oldValue: T, newValue: T)
-
 }

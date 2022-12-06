@@ -30,9 +30,14 @@ export function arrayOfNulls<T>(length: number): Array<T | null> {
  * @param endIndex the end (exclusive) of the subrange to copy, size of this array by default.
  *
  * @return the {@link destination} array.
-*/
-export function copyInto<T>(src: Array<Out<T>>, destination: Array<T>, destinationOffset = 0, startIndex = 0,
-  endIndex = src.length): Array<T> {
+ */
+export function copyInto<T>(
+  src: Array<Out<T>>,
+  destination: Array<T>,
+  destinationOffset = 0,
+  startIndex = 0,
+  endIndex = src.length
+): Array<T> {
   const copy: Array<Out<T>> = copyOfRange(src, startIndex, endIndex)
 
   for (let i = 0; i < copy.length; i++) {

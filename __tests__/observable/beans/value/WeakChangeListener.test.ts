@@ -8,7 +8,6 @@ import { Any } from "../../../utils/Any"
 import { ChangeListenerMock } from "./ChangeListenerMock"
 
 class ObservableMock implements ObservableValue<Record<string, unknown> | null> {
-
   removeCounter = 0
 
   reset() {
@@ -31,7 +30,6 @@ class ObservableMock implements ObservableValue<Record<string, unknown> | null> 
     // not used
     return false
   }
-
 }
 
 describe("WeakChangeListener", function () {

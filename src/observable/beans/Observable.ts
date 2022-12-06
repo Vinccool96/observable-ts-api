@@ -13,10 +13,9 @@ import { InvalidationListener } from "./InvalidationListener"
  *
  * @see ./value/ObservableValue
  */
- // * @see io.github.vinccool96.observationskt.collections.ObservableList
- // * @see io.github.vinccool96.observationskt.collections.ObservableMap
+// * @see io.github.vinccool96.observationskt.collections.ObservableList
+// * @see io.github.vinccool96.observationskt.collections.ObservableMap
 export interface Observable {
-
   /**
    * Adds an {@link InvalidationListener} which will be notified whenever the `Observable` becomes invalid. If the same
    * listener is added more than once, then it will be notified more than once. That is, no check is made to ensure
@@ -62,5 +61,4 @@ export interface Observable {
    * {@label INVALIDATION_LISTENER}
    */
   hasListener(listener: InvalidationListener): boolean
-
 }

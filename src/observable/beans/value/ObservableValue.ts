@@ -42,7 +42,6 @@ import { In } from "../../../useful"
  * @see ObservableStringValue
  */
 export interface ObservableValue<T> extends Observable {
-
   /**
    * Returns the current value of this `ObservableValue`
    *
@@ -94,5 +93,4 @@ export interface ObservableValue<T> extends Observable {
    */
   hasListener(listener: ChangeListener<In<T>>): boolean
   hasListener(listener: InvalidationListener): boolean
-
 }

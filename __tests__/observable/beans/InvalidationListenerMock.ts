@@ -3,7 +3,6 @@ import { expect } from "@jest/globals"
 import { InvalidationListener, Observable } from "../../../src"
 
 export class InvalidationListenerMock implements InvalidationListener {
-
   private observable: Observable | null
 
   private counter: number
@@ -28,5 +27,4 @@ export class InvalidationListenerMock implements InvalidationListener {
     expect(this.counter).toEqual(counter)
     this.reset()
   }
-
 }
