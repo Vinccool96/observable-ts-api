@@ -1,10 +1,19 @@
 {
   "name": "observable-ts-api",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "./build/common/index.js",
+  "module": "./build/module/index.js",
+  "types": "./build/types/index.d.ts",
+  "exports": {
+    "import": "./build/module/index.js",
+    "types": "./build/types/index.d.ts",
+    "require": "./build/common/index.js"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf build && yarn run build:common && yarn run build:module",
+    "build:common": "tsc -p tsconfig.common.json",
+    "build:module": "tsc -p tsconfig.module.json",
     "prepublishOnly": "yarn run build && yarn pack",
     "test": "jest"
   },
