@@ -1,8 +1,6 @@
-import { expect } from "@jest/globals"
-
 import { isInteger } from "int-or-float"
 
-import { ChangeListener, ObservableValue } from "../../../../src"
+import { ChangeListener, ObservableValue } from "observable-ts-api"
 
 const EPSILON = 1e-12
 

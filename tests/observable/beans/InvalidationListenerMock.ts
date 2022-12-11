@@ -22,7 +22,7 @@ export class InvalidationListenerMock implements InvalidationListener {
     this.counter = 0
   }
 
-  check(observable: Observable, counter: number) {
+  check(observable: Observable | null, counter: number) {
     expect(this.observable).toBe(observable)
     expect(this.counter).toEqual(counter)
     this.reset()

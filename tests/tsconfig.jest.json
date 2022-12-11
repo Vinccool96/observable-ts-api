@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "rootDir": "..",
+    "paths": {
+      "observable-ts-api": ["src"],
+      "observable-ts-api/*": ["src/*"]
+    },
+    "typeRoots": ["../node_modules/@types"],
+    "types": ["node", "jest"]
+    },
+  "include": ["**/*.ts"]
+}

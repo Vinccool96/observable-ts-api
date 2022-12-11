@@ -81,4 +81,4 @@ build
 *.js
 *.js.map
 
-!jest.config.js
+!jest.config.ts

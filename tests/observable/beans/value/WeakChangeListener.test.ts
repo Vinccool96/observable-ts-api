@@ -1,8 +1,6 @@
-import { describe, it, expect } from "@jest/globals"
-
 import { gc } from "expose-ts-gc"
 
-import { ChangeListener, InvalidationListener, ObservableValue, WeakChangeListener } from "../../../../src"
+import { ChangeListener, InvalidationListener, ObservableValue, WeakChangeListener } from "observable-ts-api"
 
 import { Any } from "../../../utils/Any"
 import { ChangeListenerMock } from "./ChangeListenerMock"
