@@ -11,7 +11,7 @@ import { InvalidationListener } from "./InvalidationListener"
  * event handlers. Implementations in this library mark themselves as invalid when the first invalidation event occurs.
  * They do not generate any more invalidation events until their value is recomputed and valid again.
  *
- * @see ./value/ObservableValue
+ * @see observable/beans/value/ObservableValue
  */
 // * @see io.github.vinccool96.observationskt.collections.ObservableList
 // * @see io.github.vinccool96.observationskt.collections.ObservableMap
