@@ -49,8 +49,5 @@ jobs:
       - name: Install Packages
         run: yarn install
 
-      - name: Build site
-        run: yarn build
-
       - name: Run tests
         run: yarn test
