@@ -1,6 +1,7 @@
+import { In } from "../../useful"
 import { ChangeListener, InvalidationListener, ObservableValue } from "../../observable"
 
-import { In } from "../../useful"
+import { hooks } from "../../hooks"
 
 import { ExpressionHelperBase } from "./ExpressionHelperBase"
 import { isInvalidationListener } from "../utils/typeChecks"
@@ -26,7 +27,7 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
 
   protected abstract removeListener(listener: ChangeListener<In<T>>): ExpressionHelper<T> | null
 
-  protected abstract fireValueChangedEvent(): void
+  protected abstract fireValueChangedEvent(): Promise<void>
 
   static addListener<T>(
     helper: ExpressionHelper<T> | null,
@@ -70,8 +71,8 @@ export abstract class ExpressionHelper<T> extends ExpressionHelperBase {
     }
   }
 
-  static fireValueChangedEvent<T>(helper: ExpressionHelper<T> | null) {
-    helper?.fireValueChangedEvent()
+  static async fireValueChangedEvent<T>(helper: ExpressionHelper<T> | null) {
+    await helper?.fireValueChangedEvent()
   }
 }
 
@@ -103,8 +104,12 @@ class SingleInvalidation<T> extends ExpressionHelper<T> {
     }
   }
 
-  protected fireValueChangedEvent(): void {
-    this.listener.invalidated(this.observable)
+  protected async fireValueChangedEvent(): Promise<void> {
+    try {
+      this.listener.invalidated(this.observable)
+    } catch (e) {
+      await hooks.callHook("observable:error", e as Error)
+    }
   }
 
   get invalidationListeners(): InvalidationListener[] {
@@ -147,12 +152,16 @@ class SingleChange<T> extends ExpressionHelper<T> {
     }
   }
 
-  protected fireValueChangedEvent(): void {
+  protected async fireValueChangedEvent(): Promise<void> {
     const oldValue = this.currentValue
     this.currentValue = this.observable.value
     const changed = this.currentValue === null ? oldValue !== null : this.currentValue !== oldValue
     if (changed) {
-      this.listener.changed(this.observable, oldValue, this.currentValue)
+      try {
+        this.listener.changed(this.observable, oldValue, this.currentValue)
+      } catch (e) {
+        await hooks.callHook("observable:error", e as Error)
+      }
     }
   }
 
@@ -342,7 +351,7 @@ class Generic<T> extends ExpressionHelper<T> {
     return this
   }
 
-  protected fireValueChangedEvent(): void {
+  protected async fireValueChangedEvent(): Promise<void> {
     const curInvalidationList = this.invalidationListenerArray
     const curInvalidationSize = this.invalidationSize
     const curChangeList = this.changeListenerArray
@@ -351,7 +360,11 @@ class Generic<T> extends ExpressionHelper<T> {
     try {
       this.locked = true
       for (let i = 0; i < curInvalidationSize; i++) {
-        curInvalidationList[i]?.invalidated(this.observable)
+        try {
+          curInvalidationList[i]?.invalidated(this.observable)
+        } catch (e) {
+          await hooks.callHook("observable:error", e as Error)
+        }
       }
       if (curChangeSize > 0) {
         const oldValue = this.currentValue
@@ -359,7 +372,11 @@ class Generic<T> extends ExpressionHelper<T> {
         const changed = this.currentValue === null ? oldValue !== null : this.currentValue !== oldValue
         if (changed) {
           for (let i = 0; i < curChangeSize; i++) {
-            curChangeList[i]?.changed(this.observable, oldValue, this.currentValue)
+            try {
+              curChangeList[i]?.changed(this.observable, oldValue, this.currentValue)
+            } catch (e) {
+              await hooks.callHook("observable:error", e as Error)
+            }
           }
         }
       }
