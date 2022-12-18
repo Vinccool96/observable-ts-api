@@ -5,3 +5,5 @@ export { WeakListener } from "./WeakListener"
 export { WeakInvalidationListener } from "./WeakInvalidationListener"
 
 export * from "./value"
+
+export * from "./binding"
