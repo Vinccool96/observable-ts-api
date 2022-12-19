@@ -9,7 +9,6 @@ function isWeakListener(obj: WeakListener | Record<string, unknown> | null): obj
 }
 
 export class ExpressionHelperBase {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
   protected trim(size: number, listeners: Array<Record<string, unknown> | null>) {

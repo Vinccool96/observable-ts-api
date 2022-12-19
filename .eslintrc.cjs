@@ -10,6 +10,7 @@ module.exports = {
   rules: {
     "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-empty-function": 0,
     "prefer-const": ["warn", { destructuring: "all" }],
     "spaced-comment": "warn",
     curly: "error",
