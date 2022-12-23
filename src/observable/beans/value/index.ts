@@ -5,3 +5,4 @@ export { WeakChangeListener } from "./WeakChangeListener"
 
 export { ObservableBooleanValue } from "./ObservableBooleanValue"
 export { ObservableObjectValue } from "./ObservableObjectValue"
+export { ObservableStringValue } from "./ObservableStringValue"
