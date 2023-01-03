@@ -121,7 +121,7 @@ class ShortCircuitOrInvalidator implements InvalidationListener {
 
 /**
  * Creates a {@link BooleanBinding} that calculates the conditional-OR operation on the value of two instance of
- * {@link ObservableBooleanValue.
+ * {@link ObservableBooleanValue}.
  *
  * @param op1 first `ObservableBooleanValue`
  * @param op2 second `ObservableBooleanValue`
