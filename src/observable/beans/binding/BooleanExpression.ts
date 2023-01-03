@@ -1,5 +1,6 @@
 import { ChangeListener, ObservableBooleanValue } from "../value"
 import { InvalidationListener } from "../InvalidationListener"
+
 import { In } from "../../../useful"
 
 /**
@@ -17,10 +18,6 @@ export abstract class BooleanExpression implements ObservableBooleanValue {
 
   abstract get(): boolean
 
-  get value(): boolean | null {
-    return this.get()
-  }
-
   abstract addListener(listener: InvalidationListener)
   abstract addListener(listener: ChangeListener<In<boolean | null>>)
 
@@ -29,4 +26,8 @@ export abstract class BooleanExpression implements ObservableBooleanValue {
 
   abstract hasListener(listener: InvalidationListener)
   abstract hasListener(listener: ChangeListener<In<boolean | null>>)
+
+  get value(): boolean | null {
+    return this.get()
+  }
 }
