@@ -53,7 +53,7 @@ export interface Binding<T> extends ObservableValue<T> {
    *
    * All bindings in our implementation use instances of {@link WeakInvalidationListener}, which means usually a binding
    * does not need to be disposed. But if you plan to use your application in environments that do not support
-   * `WeakReferences` you have to dispose unused `Bindings` to avoid memory leaks.
+   * `WeakRefs` you have to dispose unused `Bindings` to avoid memory leaks.
    */
   dispose()
 }

@@ -1,5 +1,7 @@
 import { ChangeListener, ObservableBooleanValue } from "../value"
 import { InvalidationListener } from "../InvalidationListener"
+import { BooleanBinding } from "./BooleanBinding"
+import { and } from "./bindings"
 
 import { In } from "../../../useful"
 
@@ -29,5 +31,17 @@ export abstract class BooleanExpression implements ObservableBooleanValue {
 
   get value(): boolean | null {
     return this.get()
+  }
+
+  /**
+   * Creates a new `BooleanExpression` that performs the conditional AND-operation on this `BooleanExpression` and a
+   * {@link ObservableBooleanValue.
+   *
+   * @param other the other `ObservableBooleanValue`
+   *
+   * @return the new `BooleanExpression`
+   */
+  and(other: ObservableBooleanValue): BooleanBinding {
+    return and(this, other)
   }
 }
