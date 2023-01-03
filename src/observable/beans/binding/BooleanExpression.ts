@@ -1,7 +1,7 @@
 import { ChangeListener, ObservableBooleanValue } from "../value"
 import { InvalidationListener } from "../InvalidationListener"
 import { BooleanBinding } from "./BooleanBinding"
-import { and, or } from "./bindings"
+import { and, not, or } from "./bindings"
 
 import { In } from "../../../useful"
 
@@ -55,5 +55,14 @@ export abstract class BooleanExpression implements ObservableBooleanValue {
    */
   or(other: ObservableBooleanValue): BooleanBinding {
     return or(this, other)
+  }
+
+  /**
+   * Creates a new `BooleanExpression` that calculates the negation of this `BooleanExpression`.
+   *
+   * @return the new `BooleanExpression`
+   */
+  not(): BooleanBinding {
+    return not(this)
   }
 }

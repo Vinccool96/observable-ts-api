@@ -131,3 +131,35 @@ class ShortCircuitOrInvalidator implements InvalidationListener {
 export function or(op1: ObservableBooleanValue, op2: ObservableBooleanValue): BooleanBinding {
   return new BooleanOrBinding(op1, op2)
 }
+
+class BooleanNotBinding extends BooleanBinding {
+  constructor(private readonly op: ObservableBooleanValue) {
+    super()
+    super.bind(this.op)
+  }
+
+  override dispose() {
+    super.unbind(this.op)
+  }
+
+  computeValue(): boolean {
+    return !this.op.get()
+  }
+
+  // TODO: ObservableList
+  override get dependencies(): Array<Observable> {
+    // TODO: singletonObservableList
+    return [this.op]
+  }
+}
+
+/**
+ * Creates a {@link BooleanBinding} that calculates the inverse of the value of a {@link ObservableBooleanValue}.
+ *
+ * @param op the `ObservableBooleanValue`
+ *
+ * @return the new `BooleanBinding`
+ */
+export function not(op: ObservableBooleanValue): BooleanBinding {
+  return new BooleanNotBinding(op)
+}
