@@ -152,7 +152,7 @@ class SingleChange<T> extends ExpressionHelper<T> {
     }
   }
 
-  protected fireValueChangedEvent(): void {
+  protected async fireValueChangedEvent(): Promise<void> {
     const oldValue = this.currentValue
     this.currentValue = this.observable.value
     const changed = this.currentValue === null ? oldValue !== null : this.currentValue !== oldValue
@@ -160,7 +160,7 @@ class SingleChange<T> extends ExpressionHelper<T> {
       try {
         this.listener.changed(this.observable, oldValue, this.currentValue)
       } catch (e) {
-        hooks.callHook("observable:error", e as Error)
+        await hooks.callHook("observable:error", e as Error)
       }
     }
   }

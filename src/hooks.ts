@@ -1,4 +1,4 @@
-import { createHooks } from "hookable"
+import { createHooks } from "sync-hookable"
 
 type HookResult = Promise<void> | void
 

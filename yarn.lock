@@ -2324,11 +2324,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hookable@^5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/hookable/-/hookable-5.4.2.tgz#6a1d3c4b3cb5b4262f99b3070ce0ee92c9c78049"
-  integrity sha512-6rOvaUiNKy9lET1X0ECnyZ5O5kSV0PJbtA5yZUgdEF7fGJEVwSLSislltyt7nFwVVALYHQJtfGeAR2Y0A0uJkg==
-
 html-escaper@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
@@ -3473,6 +3468,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+sync-hookable@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sync-hookable/-/sync-hookable-1.0.1.tgz#3953381e496e4fd2d2badd6a2bcdeee7ee49c99a"
+  integrity sha512-vNzSnG6lqdfoYxQcRi9llaLdKCa4FipwWRDP78XFn2SinwpeHZoHLUxOJU5PFU45TXWtqGgFIOwXaetp3c6P4w==
 
 test-exclude@^6.0.0:
   version "6.0.0"
